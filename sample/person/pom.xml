@@ -28,7 +28,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <java.version>17</java.version>
         <docker-maven-plugin.version>0.42.0</docker-maven-plugin.version>
-        <docker-image.openjdk>eclipse-temurin:17-jre-alpine</docker-image.openjdk>
+        <docker-image.openjdk>eclipse-temurin:17-jre-jammy</docker-image.openjdk>
         <docker-image.postgres>postgres:15.2-alpine</docker-image.postgres>
         <keycloak-adapter.version>21.0.1</keycloak-adapter.version>
         <lombok.version>1.18.26</lombok.version>
