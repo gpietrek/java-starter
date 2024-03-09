@@ -31,7 +31,7 @@ class PersonControllerTest {
 
     @BeforeEach
     void arrange() {
-      given(personen.create(anyString(), anyString())).willReturn(new Person("Hugo", "Tester"));
+      given(personen.create(anyString(), anyString())).willReturn(new Person(42, "Hugo", "Tester"));
     }
 
     @Nested
@@ -55,7 +55,7 @@ class PersonControllerTest {
 
       @Test
       void then_body_is_correct() {
-        var expected = new PersonRepresentation("Hugo", "Tester");
+        var expected = new PersonRepresentation(42, "Hugo", "Tester");
         assertThat(result.getBody()).isEqualTo(expected);
       }
     }
