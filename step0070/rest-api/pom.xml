@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>de.conciso.starter</groupId>
-            <artifactId>domain-api</artifactId>
+            <artifactId>domain-core</artifactId>
         </dependency>
 
         <dependency>

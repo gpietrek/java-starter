@@ -93,14 +93,18 @@
                                 </ports>
                                 <volumes>
                                     <bind>
-                                        <volume>src/test/docker/keycloak:/tmp/keycloak</volume>
+                                        <volume>src/test/docker/keycloak:/opt/keycloak/data/import</volume>
                                     </bind>
                                 </volumes>
                                 <env>
-                                    <KEYCLOAK_USER>admin</KEYCLOAK_USER>
-                                    <KEYCLOAK_PASSWORD>passKeycloakAdmin</KEYCLOAK_PASSWORD>
-                                    <KEYCLOAK_IMPORT>/tmp/keycloak/java-starter-realm.json</KEYCLOAK_IMPORT>
+                                    <KEYCLOAK_ADMIN>admin</KEYCLOAK_ADMIN>
+                                    <KEYCLOAK_ADMIN_PASSWORD>passKeycloakAdmin</KEYCLOAK_ADMIN_PASSWORD>
                                 </env>
+                                <entryPoint>
+                                    <shell>
+                                        opt/keycloak/bin/kc.sh start-dev --import-realm
+                                    </shell>
+                                </entryPoint>
                             </run>
                         </image>
                     </images>

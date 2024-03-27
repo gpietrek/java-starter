@@ -5,7 +5,7 @@
 call other service (using WebClient)
 
 ### Prerequisites
-- Java 17 JDK
+- Java 21 JDK
 - Maven
 - Docker
 - Postman
