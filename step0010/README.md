@@ -5,7 +5,7 @@
 Unser erstes Java-Programm
 
 ### Prerequisites
-- Java 17 JDK
+- Java 21 JDK
 
 Prüfung mit:
 ```shell
@@ -14,9 +14,9 @@ java -version
 
 Erwartetes Ergebnis (Beispiel):
 ```shell
-openjdk version "17.0.10" 2024-01-16
-OpenJDK Runtime Environment Temurin-17.0.10+7 (build 17.0.10+7)
-OpenJDK 64-Bit Server VM Temurin-17.0.10+7 (build 17.0.10+7, mixed mode)
+openjdk version "21.0.2" 2024-01-16 LTS
+OpenJDK Runtime Environment Temurin-21.0.2+13 (build 21.0.2+13-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.2+13 (build 21.0.2+13-LTS, mixed mode)
 ```
 
 ### Build and run
