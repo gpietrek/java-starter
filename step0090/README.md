@@ -5,14 +5,14 @@
 Store data with Spring Data in PostgreSQL
 
 ### Prerequisites
-- Java 17 JDK
+- Java 21 JDK
 - Maven
 - Docker
 
 ### Build and run
 
 ```shell
-docker-compose -f docker/src/test/docker/docker-compose.yml up
+docker compose -f docker/src/test/docker/docker-compose.yml up
 mvn clean package spring-boot:run
 ```
 

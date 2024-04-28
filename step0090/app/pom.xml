@@ -32,6 +32,10 @@
             <groupId>de.conciso.starter</groupId>
             <artifactId>infrastructure</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

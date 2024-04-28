@@ -5,7 +5,7 @@
 Use Mockito for mocking
 
 ### Prerequisites
-- Java 17 JDK
+- Java 21 JDK
 - Maven
 
 ### Build and run
