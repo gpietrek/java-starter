@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.3</version>
+        <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -24,14 +24,13 @@
     </modules>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
         <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <docker-maven-plugin.version>0.44.0</docker-maven-plugin.version>
         <docker-image.openjdk>eclipse-temurin:21-jre-jammy</docker-image.openjdk>
-        <docker-image.postgres>postgres:16.2-alpine</docker-image.postgres>
-        <docker-image.keycloak>quay.io/keycloak/keycloak:24.0.1</docker-image.keycloak>
-        <lombok.version>1.18.30</lombok.version>
+        <docker-image.postgres>postgres:16.3-alpine</docker-image.postgres>
+        <docker-image.keycloak>quay.io/keycloak/keycloak:24.0.4</docker-image.keycloak>
+        <lombok.version>1.18.32</lombok.version>
     </properties>
 
     <build>
