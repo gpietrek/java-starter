@@ -260,13 +260,12 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:8081/auth/realms/java-starter-realm/protocol/openid-connect/token",
+					"raw": "localhost:8081/realms/java-starter-realm/protocol/openid-connect/token",
 					"host": [
 						"localhost"
 					],
 					"port": "8081",
 					"path": [
-						"auth",
 						"realms",
 						"java-starter-realm",
 						"protocol",

@@ -10,9 +10,8 @@ services:
       - POSTGRES_DB=person
   person:
     container_name: person
-    image: person:local
+    image: person:latest
     depends_on:
       - db-person
-      - idm
     ports:
       - 8083:8080

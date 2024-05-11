@@ -1,7 +1,7 @@
 services:
   db-auftrag:
     container_name: db-auftrag
-    image: postgres:postgres:16.3-alpine
+    image: postgres:16.3-alpine
     ports:
       - 5433:5432
     environment:
@@ -10,9 +10,8 @@ services:
       - POSTGRES_DB=auftrag
   auftrag:
     container_name: auftrag
-    image: auftrag:local
+    image: auftrag:latest
     depends_on:
       - db-auftrag
-      - idm
     ports:
       - 8082:8080
