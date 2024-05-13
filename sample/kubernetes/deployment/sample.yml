@@ -20,8 +20,6 @@ spec:
         env:
         - name: SPRING_DATASOURCE_URL
           value: 'jdbc:postgresql://db:5434/person'
-        - name: KEYCLOAK_AUTH_SERVER_URL
-          value: 'http://idm:8080/auth'
         resources:
           limits:
             cpu: 500m
@@ -60,8 +58,6 @@ spec:
         env:
         - name: SPRING_DATASOURCE_URL
           value: 'jdbc:postgresql://db:5433/auftrag'
-        - name: KEYCLOAK_AUTH_SERVER_URL
-          value: 'http://idm:8080/auth'
         resources:
           limits:
             cpu: 500m
@@ -98,8 +94,6 @@ spec:
       - name: shop
         image: 'master:32000/shop:latest'
         env:
-        - name: KEYCLOAK_AUTH_SERVER_URL
-          value: 'http://idm:8080/auth'
         resources:
           limits:
             cpu: 500m

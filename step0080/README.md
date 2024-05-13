@@ -5,7 +5,7 @@
 Use Mockito for mocking
 
 ### Prerequisites
-- Java 17 JDK
+- Java 21 JDK
 - Maven
 
 ### Build and run
@@ -14,7 +14,7 @@ Use Mockito for mocking
 mvn clean package spring-boot:run
 ```
 
-Open in browser: http://localhost:8080/api/hello?name=Georg
+Open in browser:
 - http://localhost:8080/hello.html
 - http://localhost:8080/api/hello?name=Georg
-- http://localhost:8080/api/Georg
+- http://localhost:8080/api/hello/Georg

@@ -1,7 +1,7 @@
 services:
   db:
     container_name: db
-    image: postgres:15.2-alpine
+    image: postgres:16.3-alpine
     ports:
       - 5432:5432
     environment:
@@ -10,15 +10,15 @@ services:
       - POSTGRES_DB=person
   idm:
     container_name: idm
-    image: quay.io/keycloak/keycloak:19.0.3-legacy
+    image: quay.io/keycloak/keycloak:24.0.4
+    entrypoint: [ "opt/keycloak/bin/kc.sh", "start-dev", "--import-realm" ]
     ports:
       - 8081:8080
     volumes:
-      - ./keycloak:/tmp/keycloak
+      - ./keycloak:/opt/keycloak/data/import
     environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=passKeycloakAdmin
-      - KEYCLOAK_IMPORT=/tmp/keycloak/java-starter-realm.json
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=passKeycloakAdmin
   java-starter:
     container_name: java-starter
     image: java-starter:latest

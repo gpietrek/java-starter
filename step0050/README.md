@@ -5,7 +5,7 @@
 Unit-Tests mit JUnit 5 und AssertJ
 
 ### Prerequisites
-- Java 17 JDK
+- Java 21 JDK
 - Maven
 
 ### Build and run

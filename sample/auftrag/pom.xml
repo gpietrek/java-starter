@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.10</version>
+        <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -24,14 +24,12 @@
     </modules>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <java.version>17</java.version>
-        <docker-maven-plugin.version>0.42.0</docker-maven-plugin.version>
-        <docker-image.openjdk>eclipse-temurin:17-jre-jammy</docker-image.openjdk>
-        <docker-image.postgres>postgres:15.2-alpine</docker-image.postgres>
-        <keycloak-adapter.version>21.0.1</keycloak-adapter.version>
-        <lombok.version>1.18.26</lombok.version>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <docker-maven-plugin.version>0.44.0</docker-maven-plugin.version>
+        <docker-image.openjdk>eclipse-temurin:21-jre-jammy</docker-image.openjdk>
+        <docker-image.postgres>postgres:16.3-alpine</docker-image.postgres>
+        <lombok.version>1.18.32</lombok.version>
     </properties>
 
     <build>
@@ -88,13 +86,6 @@
                 <groupId>de.conciso.auftrag</groupId>
                 <artifactId>docker</artifactId>
                 <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.keycloak.bom</groupId>
-                <artifactId>keycloak-adapter-bom</artifactId>
-                <version>${keycloak-adapter.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>

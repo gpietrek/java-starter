@@ -3,7 +3,7 @@
 ## Auftrag service
 
 ### Prerequisites
-- Java 11 JDK
+- Java 21 JDK
 - Maven
 - Docker
 - Postman
