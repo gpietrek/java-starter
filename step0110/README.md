@@ -33,4 +33,4 @@ Open in browser:
 
 - Username: `admin`
 - Password: `passKeycloakAdmin`
-- Admin console: http://localhost:8081/auth/admin/master/console/#/realms/java-starter-realm
+- Admin console: http://localhost:8081/admin/master/console/#/java-starter-realm

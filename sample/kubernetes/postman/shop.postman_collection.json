@@ -49,13 +49,12 @@
 					]
 				},
 				"url": {
-					"raw": "{{host.idm}}:{{port.idm}}/auth/realms/java-starter-realm/protocol/openid-connect/token",
+					"raw": "{{host.idm}}:{{port.idm}}/realms/java-starter-realm/protocol/openid-connect/token",
 					"host": [
 						"{{host.idm}}"
 					],
 					"port": "{{port.idm}}",
 					"path": [
-						"auth",
 						"realms",
 						"java-starter-realm",
 						"protocol",

@@ -1,15 +1,15 @@
 services:
   idm:
     container_name: idm
-    image: quay.io/keycloak/keycloak:19.0.3-legacy
+    image: quay.io/keycloak/keycloak:24.0.4
+    entrypoint: [ "opt/keycloak/bin/kc.sh", "start-dev", "--import-realm" ]
     ports:
       - 0.0.0.0:8080:8080
     volumes:
-      - .:/tmp/keycloak
+      - .:/opt/keycloak/data/import
     environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=passKeycloakAdmin
-      - KEYCLOAK_IMPORT=/tmp/keycloak/java-starter-realm.json
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=passKeycloakAdmin
   db-person:
     container_name: db-person
     image: postgres:16.3-alpine
