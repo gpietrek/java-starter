@@ -26,7 +26,7 @@
     <properties>
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <docker-maven-plugin.version>0.43.4</docker-maven-plugin.version>
+        <docker-maven-plugin.version>0.44.0</docker-maven-plugin.version>
         <docker-image.openjdk>eclipse-temurin:21-jre-jammy</docker-image.openjdk>
         <docker-image.postgres>postgres:16.3-alpine</docker-image.postgres>
     </properties>
