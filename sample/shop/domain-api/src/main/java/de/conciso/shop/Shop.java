@@ -1,5 +1,6 @@
 package de.conciso.shop;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface Shop {
@@ -9,7 +10,7 @@ public interface Shop {
 
   Optional<Person> findPerson(int id);
 
-  Optional<Auftrag> placeOrder(int personId, String bestellNummer);
+  Optional<Auftrag> placeOrder(int personId, String bestellNummer, List<Artikel> artikel);
 
   Optional<Auftrag> findAuftrag(int id);
 }

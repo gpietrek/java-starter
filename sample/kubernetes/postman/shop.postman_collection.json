@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "04848ed0-8700-4c92-9d72-8c09d332319d",
+		"_postman_id": "2deaf910-5daa-4b32-bcf4-e4838d4b4820",
 		"name": "shop",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33727951"
 	},
 	"item": [
 		{
@@ -99,13 +100,11 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer {{access_token}}",
-						"type": "default"
+						"value": "Bearer {{access_token}}"
 					}
 				],
 				"body": {
@@ -144,13 +143,11 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer {{access_token}}",
-						"type": "default"
+						"value": "Bearer {{access_token}}"
 					}
 				],
 				"body": {
@@ -191,13 +188,11 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer {{access_token}}",
-						"type": "default"
+						"value": "Bearer {{access_token}}"
 					}
 				],
 				"url": {
@@ -217,6 +212,39 @@
 			"response": []
 		},
 		{
+			"name": "Find all Persons",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{host.service}}:{{port.service}}/api/person",
+					"host": [
+						"{{host.service}}"
+					],
+					"port": "{{port.service}}",
+					"path": [
+						"api",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Place Order",
 			"event": [
 				{
@@ -227,7 +255,8 @@
 							"postman.clearGlobalVariable(\"orderId\");",
 							"postman.setGlobalVariable(\"orderId\", data.id);"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -241,18 +270,16 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer {{access_token}}",
-						"type": "default"
+						"value": "Bearer {{access_token}}"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"personId\": {{personId}},\n    \"bestellNummer\": \"{{$randomInt}}\"\n}",
+					"raw": "{\n    \"personId\": {{personId}},\n    \"bestellNummer\": \"{{$randomInt}}\",\n    \"artikel\": [\n        {\n            \"nummer\": \"4711\",\n            \"bezeichnung\": \"Tisch\",\n            \"anzahl\": 1\n        },\n        {\n            \"nummer\": \"4712\",\n            \"bezeichnung\": \"Stuhl\",\n            \"anzahl\": 4\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -286,13 +313,11 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer {{access_token}}",
-						"type": "default"
+						"value": "Bearer {{access_token}}"
 					}
 				],
 				"url": {
@@ -306,6 +331,39 @@
 						"shop",
 						"auftrag",
 						"{{orderId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all Orders",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{host.service}}:{{port.service}}/api/auftrag",
+					"host": [
+						"{{host.service}}"
+					],
+					"port": "{{port.service}}",
+					"path": [
+						"api",
+						"auftrag"
 					]
 				}
 			},

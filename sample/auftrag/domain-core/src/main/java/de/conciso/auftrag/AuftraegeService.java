@@ -1,5 +1,6 @@
 package de.conciso.auftrag;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -33,5 +34,11 @@ public class AuftraegeService implements Auftraege {
       logger.warn("no auftrag found with id: " + id);
     }
     return found;
+  }
+
+  @Override
+  public List<Auftrag> findAll() {
+    logger.info("list all persons");
+    return auftragDAO.findAll();
   }
 }
