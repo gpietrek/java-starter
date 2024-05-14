@@ -11,52 +11,67 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/person")
 public class PersonController {
 
-  private final Personen personen;
+    private final Personen personen;
 
-  public PersonController(Personen personen) {
-    this.personen = personen;
-  }
-
-  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<PersonRepresentation> create(
-      @RequestBody PersonRepresentation personRepresentation
-  ) {
-    try {
-      var person = personen.create(personRepresentation.toPerson());
-      return ResponseEntity.ok(PersonRepresentation.from(person));
-    } catch (Exception exception) {
-      return ResponseEntity.internalServerError().build();
+    public PersonController(Personen personen) {
+        this.personen = personen;
     }
-  }
 
-  @PostMapping(path = "/{id}/address", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<PersonRepresentation> addAddress(
-      @PathVariable("id") int personId,
-      @RequestBody AddressRepresentation addressRepresentation
-  ) {
-    try {
-      return personen.addAddress(personId, addressRepresentation.toAddress())
-          .map(PersonRepresentation::from)
-          .map(ResponseEntity::ok)
-          .orElseGet(() -> ResponseEntity.notFound().build());
-    } catch (Exception exception) {
-      return ResponseEntity.internalServerError().build();
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PersonRepresentation> create(
+            @RequestBody PersonRepresentation personRepresentation
+    ) {
+        try {
+            var person = personen.create(personRepresentation.toPerson());
+            return ResponseEntity.ok(PersonRepresentation.from(person));
+        } catch (Exception exception) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
-  }
 
-  @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<PersonRepresentation> findById(@PathVariable("id") int id) {
-    try {
-      return personen.findById(id)
-          .map(PersonRepresentation::from)
-          .map(ResponseEntity::ok)
-          .orElseGet(() -> ResponseEntity.notFound().build());
-    } catch (Exception exception) {
-      return ResponseEntity.internalServerError().build();
+    @PostMapping(path = "/{id}/address", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PersonRepresentation> addAddress(
+            @PathVariable("id") int personId,
+            @RequestBody AddressRepresentation addressRepresentation
+    ) {
+        try {
+            return personen.addAddress(personId, addressRepresentation.toAddress())
+                    .map(PersonRepresentation::from)
+                    .map(ResponseEntity::ok)
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        } catch (Exception exception) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
-  }
+
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PersonRepresentation> findById(@PathVariable("id") int id) {
+        try {
+            return personen.findById(id)
+                    .map(PersonRepresentation::from)
+                    .map(ResponseEntity::ok)
+                    .orElseGet(() -> ResponseEntity.notFound().build());
+        } catch (Exception exception) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<PersonRepresentation>> findAll() {
+        try {
+            return ResponseEntity.ok(personen.findAll()
+                    .stream()
+                    .map(PersonRepresentation::from)
+                    .toList()
+            );
+        } catch (Exception exception) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }

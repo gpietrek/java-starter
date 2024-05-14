@@ -1,5 +1,6 @@
 package de.conciso.person;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -43,5 +44,11 @@ public class PersonenService implements Personen {
           person.addAddress(address);
           return person;
         });
+  }
+
+  @Override
+  public List<Person> findAll() {
+    logger.info("list all persons");
+    return personDAO.findAll();
   }
 }

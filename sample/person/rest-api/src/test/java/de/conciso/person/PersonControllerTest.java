@@ -359,4 +359,80 @@ class PersonControllerTest {
       }
     }
   }
+
+  @Nested
+  class Given_findAll_succeeds {
+
+    @BeforeEach
+    void arrange() {
+      given(personen.findAll()).willReturn(List.of(new Person(ID, VORNAME, NAME)));
+    }
+
+    @Nested
+    class When_calling_findAll {
+      ResponseEntity<List<PersonRepresentation>> result;
+
+      @BeforeEach
+      void act() {
+        result = cut.findAll();
+      }
+
+      @Test
+      void then_PersonenService_is_called() {
+        verify(personen).findAll();
+      }
+
+      @Test
+      void then_status_is_OK() {
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+      }
+
+      @Test
+      void then_body_is_correct() {
+        var expected = PersonRepresentation.builder()
+                .id(ID)
+                .vorname(VORNAME)
+                .name(NAME)
+                .addresses(List.of())
+                .build();
+        assertThat(result.getBody()).isEqualTo(List.of(expected));
+      }
+    }
+  }
+
+  @Nested
+  class Given_findAll_throws_exception {
+
+    @BeforeEach
+    void arrange() {
+      given(personen.findAll()).willReturn(List.of(new Person(ID, VORNAME, NAME)));
+      given(personen.findAll()).willThrow(IllegalStateException.class);
+
+    }
+
+    @Nested
+    class When_calling_findAll {
+      ResponseEntity<List<PersonRepresentation>> result;
+
+      @BeforeEach
+      void act() {
+        result = cut.findAll();
+      }
+
+      @Test
+      void then_PersonenService_is_called() {
+        verify(personen).findAll();
+      }
+
+      @Test
+      void then_status_is_INTERNAL_SERVER_ERROR() {
+        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+      }
+
+      @Test
+      void then_body_is_empty() {
+        assertThat(result.hasBody()).isFalse();
+      }
+    }
+  }
 }
