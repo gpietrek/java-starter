@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Value;
 
 import java.util.List;
+import java.util.Optional;
 
 @Value
 @Builder
@@ -22,7 +23,8 @@ public class ArtikelRepresentation {
     }
 
     public static List<Artikel> toList(List<ArtikelRepresentation> artikel) {
-        return artikel.stream()
+        return Optional.ofNullable(artikel).orElse(List.of())
+                .stream()
                 .map(ArtikelRepresentation::toArtikel)
                 .toList();
     }
