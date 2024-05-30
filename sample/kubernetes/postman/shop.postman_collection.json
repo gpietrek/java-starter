@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2deaf910-5daa-4b32-bcf4-e4838d4b4820",
+		"_postman_id": "bac3af0e-14ff-411f-a441-1288e1c640b3",
 		"name": "shop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "33727951"
@@ -231,13 +231,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{host.service}}:{{port.service}}/api/person",
+					"raw": "{{host.service}}:{{port.service}}/api/shop/person",
 					"host": [
 						"{{host.service}}"
 					],
 					"port": "{{port.service}}",
 					"path": [
 						"api",
+						"shop",
 						"person"
 					]
 				}
@@ -356,13 +357,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{host.service}}:{{port.service}}/api/auftrag",
+					"raw": "{{host.service}}:{{port.service}}/api/shop/auftrag",
 					"host": [
 						"{{host.service}}"
 					],
 					"port": "{{port.service}}",
 					"path": [
 						"api",
+						"shop",
 						"auftrag"
 					]
 				}
