@@ -99,4 +99,14 @@ public class ShopController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    @GetMapping(path = "/auftrag", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AuftragListRepresentation> findAllOrders() {
+        try {
+            return ResponseEntity.ok(AuftragListRepresentation.from(shop.findAllOrders()));
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }

@@ -244,7 +244,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"personId\": 1,\n    \"bestellNummer\": \"4711\"\n}",
+					"raw": "{\n    \"personId\": 1,\n    \"bestellNummer\": \"4711\",\n    \"artikel\": [\n        {\n            \"nummer\": 4711,\n            \"bezeichnung\": \"Tisch\",\n            \"anzahl\": 1\n        },\n        {\n            \"nummer\": 4712,\n            \"bezeichnung\": \"Stuhl\",\n            \"anzahl\": 4\n        }\n    ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -296,6 +296,40 @@
 						"shop",
 						"auftrag",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all Orders",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/shop/auftrag",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shop",
+						"auftrag"
 					]
 				}
 			},

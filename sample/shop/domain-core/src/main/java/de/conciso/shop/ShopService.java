@@ -79,4 +79,9 @@ public class ShopService implements Shop {
         }
         return found;
     }
+
+    @Override
+    public List<Auftrag> findAllOrders() {
+        return auftraege.findAll();
+    }
 }

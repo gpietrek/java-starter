@@ -2,6 +2,7 @@ package de.conciso.shop;
 
 import static org.springframework.http.HttpStatus.OK;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.MediaType;
@@ -52,6 +53,24 @@ public class AuftraegeRestClient implements Auftraege {
                     .map(Optional::of);
         } else {
             return Mono.just(Optional.empty());
+        }
+    }
+
+    @Override
+    public List<Auftrag> findAll() {
+        return auftrageWebClient.get()
+                .accept(MediaType.APPLICATION_JSON)
+                .exchangeToMono(this::processListResponse)
+                .contextWrite(context -> context.put("authorizationToken", tokenHolder.getToken()))
+                .block();
+    }
+
+    private Mono<List<Auftrag>> processListResponse(ClientResponse response) {
+        if (response.statusCode().equals(OK)) {
+            return response.bodyToMono(AuftragListRestClientRepresentation.class)
+                    .map(AuftragListRestClientRepresentation::toList);
+        } else {
+            return Mono.just(List.of());
         }
     }
 }

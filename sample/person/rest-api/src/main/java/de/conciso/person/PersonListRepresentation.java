@@ -9,11 +9,11 @@ import java.util.List;
 @Builder
 public class PersonListRepresentation {
 
-    List<PersonRepresentation> persons;
+    List<PersonRepresentation> personList;
 
-    public static PersonListRepresentation from(List<Person> persons) {
+    public static PersonListRepresentation from(List<Person> personList) {
         return PersonListRepresentation.builder()
-                .persons(persons.stream()
+                .personList(personList.stream()
                         .map(PersonRepresentation::from)
                         .toList()
                 )

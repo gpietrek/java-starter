@@ -38,7 +38,7 @@ public class AuftraegeService implements Auftraege {
 
   @Override
   public List<Auftrag> findAll() {
-    logger.info("list all persons");
+    logger.info("list all orders");
     return auftragDAO.findAll();
   }
 }

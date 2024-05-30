@@ -4,8 +4,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/auftrag")
 public class AuftragController {
@@ -40,13 +38,9 @@ public class AuftragController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<AuftragRepresentation>> findAll() {
+    public ResponseEntity<AuftragListRepresentation> findAll() {
         try {
-            return ResponseEntity.ok(auftraege.findAll()
-                    .stream()
-                    .map(AuftragRepresentation::from)
-                    .toList()
-            );
+            return ResponseEntity.ok(AuftragListRepresentation.from(auftraege.findAll()));
         } catch (Exception exception) {
             return ResponseEntity.internalServerError().build();
         }

@@ -11,10 +11,10 @@ import java.util.List;
 @Builder
 public class PersonListRestClientRepresentation {
 
-    List<PersonRestClientRepresentation> persons;
+    List<PersonRestClientRepresentation> personList;
 
     public List<Person> toList() {
-        return persons.stream()
+        return personList.stream()
                 .map(PersonRestClientRepresentation::toPerson)
                 .toList();
     }
