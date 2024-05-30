@@ -62,6 +62,16 @@ public class ShopController {
         }
     }
 
+    @GetMapping(value = "/person", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PersonListRepresentation> findAllPersons() {
+        try {
+            return ResponseEntity.ok(PersonListRepresentation.from(shop.findAllPersons()));
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
     @PostMapping(path = "/auftrag", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AuftragRepresentation> placeOrder(
             @RequestBody AuftragRequestRepresentation auftragRequest

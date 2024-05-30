@@ -7,11 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/person")
@@ -63,13 +59,9 @@ public class PersonController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<PersonRepresentation>> findAll() {
+    public ResponseEntity<PersonListRepresentation> findAll() {
         try {
-            return ResponseEntity.ok(personen.findAll()
-                    .stream()
-                    .map(PersonRepresentation::from)
-                    .toList()
-            );
+            return ResponseEntity.ok(PersonListRepresentation.from(personen.findAll()));
         } catch (Exception exception) {
             return ResponseEntity.internalServerError().build();
         }

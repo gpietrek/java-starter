@@ -10,6 +10,8 @@ public interface Shop {
 
   Optional<Person> findPerson(int id);
 
+  List<Person> findAllPersons();
+
   Optional<Auftrag> placeOrder(int personId, String bestellNummer, List<Artikel> artikel);
 
   Optional<Auftrag> findAuftrag(int id);

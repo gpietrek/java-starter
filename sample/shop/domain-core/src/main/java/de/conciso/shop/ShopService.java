@@ -43,6 +43,12 @@ public class ShopService implements Shop {
         return found;
     }
 
+    @Override
+    public List<Person> findAllPersons() {
+        return personen.findAll();
+    }
+
+    @Override
     public Optional<Auftrag> placeOrder(int personId, String bestellNummer, List<Artikel> artikel) {
         logger.info("creating auftrag for person with id: " + personId + ", order number: " + bestellNummer);
         return personen.findById(personId)

@@ -2,6 +2,7 @@ package de.conciso.shop;
 
 import static org.springframework.http.HttpStatus.OK;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.MediaType;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import org.springframework.web.util.UriBuilder;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -63,6 +65,25 @@ public class PersonRestClient implements Personen {
                     .map(Optional::of);
         } else {
             return Mono.just(Optional.empty());
+        }
+    }
+
+    @Override
+    public List<Person> findAll() {
+        return personenWebClient.get()
+                .uri(UriBuilder::build)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchangeToMono(this::processListResponse)
+                .contextWrite(context -> context.put("authorizationToken", tokenHolder.getToken()))
+                .block();
+    }
+
+    private Mono<List<Person>> processListResponse(ClientResponse response) {
+        if (response.statusCode().equals(OK)) {
+            return response.bodyToMono(PersonListRestClientRepresentation.class)
+                    .map(PersonListRestClientRepresentation::toList);
+        } else {
+            return Mono.just(List.of());
         }
     }
 }

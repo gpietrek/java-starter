@@ -28,6 +28,7 @@ class PersonControllerTest {
   private static final int ID = 42;
   private static final String VORNAME = "someVorname";
   private static final String NAME = "someName";
+  private static final Person PERSON = new Person(ID, VORNAME, NAME);
   private static final String STRASSE = "someStrasse";
   private static final int PLZ = 12345;
   private static final String ORT = "someOrt";
@@ -43,7 +44,7 @@ class PersonControllerTest {
 
     @BeforeEach
     void arrange() {
-      given(personen.create(any(Person.class))).willReturn(new Person(ID, VORNAME, NAME));
+      given(personen.create(any(Person.class))).willReturn(PERSON);
     }
 
     @Nested
@@ -127,7 +128,7 @@ class PersonControllerTest {
 
     @BeforeEach
     void arrange() {
-      given(personen.findById(anyInt())).willReturn(Optional.of(new Person(ID, VORNAME, NAME)));
+      given(personen.findById(anyInt())).willReturn(Optional.of(PERSON));
     }
 
     @Nested
@@ -235,7 +236,7 @@ class PersonControllerTest {
 
     @BeforeEach
     void arrange() {
-      var person = new Person(ID, VORNAME, NAME);
+      var person = new Person(ID,VORNAME, NAME);
       person.addAddress(new Address(STRASSE, PLZ, ORT));
       given(personen.addAddress(anyInt(), any(Address.class))).willReturn(Optional.of(person));
     }
@@ -365,12 +366,12 @@ class PersonControllerTest {
 
     @BeforeEach
     void arrange() {
-      given(personen.findAll()).willReturn(List.of(new Person(ID, VORNAME, NAME)));
+      given(personen.findAll()).willReturn(List.of(PERSON));
     }
 
     @Nested
     class When_calling_findAll {
-      ResponseEntity<List<PersonRepresentation>> result;
+      ResponseEntity<PersonListRepresentation> result;
 
       @BeforeEach
       void act() {
@@ -389,13 +390,8 @@ class PersonControllerTest {
 
       @Test
       void then_body_is_correct() {
-        var expected = PersonRepresentation.builder()
-                .id(ID)
-                .vorname(VORNAME)
-                .name(NAME)
-                .addresses(List.of())
-                .build();
-        assertThat(result.getBody()).isEqualTo(List.of(expected));
+        var expected = PersonListRepresentation.from(List.of(PERSON));
+        assertThat(result.getBody()).isEqualTo(expected);
       }
     }
   }
@@ -405,14 +401,14 @@ class PersonControllerTest {
 
     @BeforeEach
     void arrange() {
-      given(personen.findAll()).willReturn(List.of(new Person(ID, VORNAME, NAME)));
+      given(personen.findAll()).willReturn(List.of(PERSON));
       given(personen.findAll()).willThrow(IllegalStateException.class);
 
     }
 
     @Nested
     class When_calling_findAll {
-      ResponseEntity<List<PersonRepresentation>> result;
+      ResponseEntity<PersonListRepresentation> result;
 
       @BeforeEach
       void act() {
