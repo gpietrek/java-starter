@@ -16,7 +16,7 @@ public class HelloWorldController {
   private static Logger logger = LogManager.getLogger(HelloWorldController.class);
 
   @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
-  public String sayHello(@RequestParam(value = "name", required = false) String name) {
+  public String sayHello(@RequestParam("name") String name) {
     var greeter = new GreeterService();
     var greetings = greeter.greet(name);
     logger.info("response: " + greetings);
