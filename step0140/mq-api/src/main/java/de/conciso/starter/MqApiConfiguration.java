@@ -7,8 +7,6 @@ import org.springframework.jms.support.converter.MappingJackson2MessageConverter
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
-@Configuration
-@EnableJms
 public class MqApiConfiguration {
 
     @Bean
