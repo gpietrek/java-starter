@@ -15,11 +15,10 @@ mvn -version
 
 Erwartetes Ergebnis (Beispiel):
 ```shell
-pache Maven 3.9.6 (bc0240f3c744dd6b6ec2920b3cd08dcc295161ae)
-Maven home: /Users/georg/jee/seu/maven
-Java version: 21.0.2, vendor: Eclipse Adoptium, runtime: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
+Maven home: /home/georg/jee/seu/maven
+Java version: 21.0.6, vendor: Eclipse Adoptium, runtime: /home/georg/jee/seu/linux/jdk-21.0.6+7
 Default locale: de_DE, platform encoding: UTF-8
-OS name: "mac os x", version: "13.6.3", arch: "aarch64", family: "mac"
+OS name: "linux", version: "6.8.0-55-generic", arch: "amd64", family: "unix"
 ```
 
 ### Build and run
