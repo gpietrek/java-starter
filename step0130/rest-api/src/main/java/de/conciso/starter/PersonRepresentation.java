@@ -5,11 +5,11 @@ import lombok.Value;
 @Value
 public class PersonRepresentation {
 
-    private int id;
+    int id;
 
-    private String vorname;
+    String vorname;
 
-    private String name;
+    String name;
 
     static PersonRepresentation from(Person person) {
         return new PersonRepresentation(person.getId(), person.getVorname(), person.getName());
