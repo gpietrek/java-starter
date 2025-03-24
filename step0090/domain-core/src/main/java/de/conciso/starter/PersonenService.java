@@ -2,15 +2,15 @@ package de.conciso.starter;
 
 import java.util.Optional;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 // todo: Test zufügen
 @Service
 public class PersonenService implements Personen {
 
-  private static final Logger logger = LogManager.getLogger(PersonenService.class);
+  private static final Logger logger = LoggerFactory.getLogger(PersonenService.class);
 
   private final PersonDAO personDAO;
 
