@@ -9,7 +9,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Component
 public class AuftraegeRestClient implements Auftraege {
 
-  private WebClient webClient;
+  private final WebClient webClient;
 
   public AuftraegeRestClient(WebClient webClient) {
     this.webClient = webClient;
@@ -28,10 +28,5 @@ public class AuftraegeRestClient implements Auftraege {
             )
         )
         .block();
-  }
-
-  @Override
-  public Optional<Auftrag> find(int id) {
-    return Optional.empty();
   }
 }
