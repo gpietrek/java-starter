@@ -33,10 +33,12 @@ public class PersonController {
   }
 
   @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Person> findById(@PathVariable("id") int id) {
+  public ResponseEntity<PersonRepresentation> findById(@PathVariable("id") int id) {
     try {
       var found = personen.findById(id);
-      return found.map(ResponseEntity::ok)
+      return found
+              .map(PersonRepresentation::from)
+              .map(ResponseEntity::ok)
               .orElseGet(() -> ResponseEntity.notFound().build());
     } catch (Exception exception) {
       return ResponseEntity.internalServerError().build();
@@ -44,7 +46,7 @@ public class PersonController {
   }
 
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Person> findByRequestParam(@RequestParam("id") int id) {
+  public ResponseEntity<PersonRepresentation> findByRequestParam(@RequestParam("id") int id) {
     return findById(id);
   }
 }
