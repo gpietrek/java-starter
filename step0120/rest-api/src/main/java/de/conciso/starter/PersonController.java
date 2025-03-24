@@ -21,7 +21,7 @@ public class PersonController {
 
   @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<PersonRepresentation> create(@RequestParam("vorname") String vorname,
-                                       @RequestParam("name") String name) {
+                                                     @RequestParam("name") String name) {
     try {
       var person = personen.create(vorname, name);
       return ResponseEntity.ok(PersonRepresentation.from(person));
@@ -37,7 +37,7 @@ public class PersonController {
     try {
       var found = personen.findById(id);
       return found.map(ResponseEntity::ok)
-          .orElseGet(() -> ResponseEntity.notFound().build());
+              .orElseGet(() -> ResponseEntity.notFound().build());
     } catch (Exception exception) {
       return ResponseEntity.internalServerError().build();
     }

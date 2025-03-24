@@ -5,9 +5,9 @@ import lombok.Value;
 @Value
 public class PersonRepresentation {
 
-    private String vorname;
+    String vorname;
 
-    private String name;
+    String name;
 
     static PersonRepresentation from(Person person) {
         return new PersonRepresentation(person.getVorname(), person.getName());

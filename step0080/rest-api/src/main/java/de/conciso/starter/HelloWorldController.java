@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/hello")
 public class HelloWorldController {
 
-  private static final Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
+  private static final Logger log = LoggerFactory.getLogger(HelloWorldController.class);
 
   private final Greeter greeter;
 
@@ -24,7 +24,7 @@ public class HelloWorldController {
   @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
   public String sayHello(@RequestParam("name") String name) {
     var greetings = greeter.greet(name);
-    logger.info("response: " + greetings);
+    log.info("response: " + greetings);
     return greetings;
   }
 

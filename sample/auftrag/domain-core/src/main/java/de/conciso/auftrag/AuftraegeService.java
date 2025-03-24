@@ -2,15 +2,12 @@ package de.conciso.auftrag;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class AuftraegeService implements Auftraege {
-
-  private static final Logger logger = LogManager.getLogger(AuftraegeService.class);
 
   private final AuftragDAO auftragDAO;
 
@@ -20,25 +17,25 @@ public class AuftraegeService implements Auftraege {
 
   @Override
   public Auftrag create(Auftrag auftrag) {
-    logger.info("create auftrag: " + auftrag.getBestellNummer());
+    log.info("create auftrag: " + auftrag.getBestellNummer());
     var created = auftragDAO.save(auftrag);
-    logger.info("auftrag id: " + auftrag.getId());
+    log.info("auftrag id: " + auftrag.getId());
     return created;
   }
 
   @Override
   public Optional<Auftrag> findById(int id) {
-    logger.info("looking for auftrag with id: " + id);
+    log.info("looking for auftrag with id: " + id);
     var found = auftragDAO.findById(id);
     if (found.isEmpty()) {
-      logger.warn("no auftrag found with id: " + id);
+      log.warn("no auftrag found with id: " + id);
     }
     return found;
   }
 
   @Override
   public List<Auftrag> findAll() {
-    logger.info("list all orders");
+    log.info("list all orders");
     return auftragDAO.findAll();
   }
 }

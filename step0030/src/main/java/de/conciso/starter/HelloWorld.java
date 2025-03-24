@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 
 public class HelloWorld {
 
-  private static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+  private static final Logger log = LoggerFactory.getLogger(HelloWorld.class);
 
   public static void main(String[] args) {
-    logger.info("Hello World!");
+    log.info("Hello World!");
   }
 }

@@ -2,15 +2,12 @@ package de.conciso.shop;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class ShopService implements Shop {
-
-    private static final Logger logger = LogManager.getLogger(ShopService.class);
 
     private final Personen personen;
 
@@ -23,22 +20,22 @@ public class ShopService implements Shop {
 
     @Override
     public Person createPerson(Person person) {
-        logger.info("create person: " + person.getVorname() + " " + person.getName());
+        log.info("create person: " + person.getVorname() + " " + person.getName());
         return personen.create(person);
     }
 
     @Override
     public Optional<Person> addAddress(int personId, Address address) {
-        logger.info("adding address to person with id: " + personId);
+        log.info("adding address to person with id: " + personId);
         return personen.addAddress(personId, address);
     }
 
     @Override
     public Optional<Person> findPerson(int id) {
-        logger.info("looking for person with id: " + id);
+        log.info("looking for person with id: " + id);
         var found = personen.findById(id);
         if (found.isEmpty()) {
-            logger.warn("no person found with id: " + id);
+            log.warn("no person found with id: " + id);
         }
         return found;
     }
@@ -50,11 +47,11 @@ public class ShopService implements Shop {
 
     @Override
     public Optional<Auftrag> placeOrder(int personId, String bestellNummer, List<Artikel> artikel) {
-        logger.info("creating auftrag for person with id: " + personId + ", order number: " + bestellNummer);
+        log.info("creating auftrag for person with id: " + personId + ", order number: " + bestellNummer);
         return personen.findById(personId)
                 .filter(person -> !person.getAdresses().isEmpty())
                 .map(person -> {
-                    var address = person.getAdresses().get(0);
+                    var address = person.getAdresses().getFirst();
                     var auftrag = Auftrag.builder()
                             .bestellNummer(bestellNummer)
                             .lieferadresse(Lieferadresse.builder()
@@ -72,10 +69,10 @@ public class ShopService implements Shop {
 
     @Override
     public Optional<Auftrag> findAuftrag(int id) {
-        logger.info("looking for auftrag with id: " + id);
+        log.info("looking for auftrag with id: " + id);
         var found = auftraege.findById(id);
         if (found.isEmpty()) {
-            logger.warn("no auftrag found with id: " + id);
+            log.warn("no auftrag found with id: " + id);
         }
         return found;
     }
