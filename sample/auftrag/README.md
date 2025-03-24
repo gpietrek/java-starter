@@ -11,6 +11,6 @@
 ### Build and run
 
 ```shell
-mvn clean install docker:run -Pdocker
+mvn clean install docker:run
 ```
 
