@@ -19,6 +19,7 @@
         <module>domain-core</module>
         <module>infrastructure</module>
         <module>rest-api</module>
+        <module>auftrag-rest-api</module>
         <module>app</module>
         <module>docker</module>
     </modules>
@@ -76,6 +77,11 @@
             <dependency>
                 <groupId>de.conciso.starter</groupId>
                 <artifactId>rest-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.conciso.starter</groupId>
+                <artifactId>auftrag-rest-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

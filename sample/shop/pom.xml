@@ -15,7 +15,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>common</module>
         <module>domain-api</module>
         <module>domain-core</module>
         <module>infrastructure</module>
@@ -59,11 +58,6 @@
     <dependencyManagement>
         <dependencies>
             <!-- our modules -->
-            <dependency>
-                <groupId>de.conciso.shop</groupId>
-                <artifactId>common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <dependency>
                 <groupId>de.conciso.shop</groupId>
                 <artifactId>domain-api</artifactId>

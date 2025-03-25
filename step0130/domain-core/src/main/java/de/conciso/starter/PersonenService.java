@@ -19,15 +19,10 @@ public class PersonenService implements Personen {
 
   @Override
   public Person create(String vorname, String name) {
-    log.info("create person: " + vorname + " " + name);
+    var auftrag = auftraege.create(Auftrag.builder().bestellNummer(vorname).build());
+    log.info("created auftrag: " + auftrag.getId());
 
-    try {
-      var auftrag = auftraege.create(Auftrag.builder().bestellNummer("Hugo").build());
-      log.info("created auftrag: " + auftrag.getBestellNummer());
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
+    log.info("create person: {} {}", vorname, name);
     var person = new Person(vorname, name);
     return personDAO.save(person);
   }

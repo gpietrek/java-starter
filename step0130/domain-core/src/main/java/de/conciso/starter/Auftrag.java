@@ -7,5 +7,6 @@ import lombok.Data;
 @Data
 @Builder
 public class Auftrag {
+  int id;
   private String bestellNummer;
 }

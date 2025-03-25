@@ -30,6 +30,10 @@
         </dependency>
         <dependency>
             <groupId>de.conciso.starter</groupId>
+            <artifactId>auftrag-rest-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.conciso.starter</groupId>
             <artifactId>infrastructure</artifactId>
         </dependency>
         <dependency>

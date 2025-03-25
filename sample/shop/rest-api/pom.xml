@@ -14,10 +14,6 @@
     <dependencies>
         <dependency>
             <groupId>de.conciso.shop</groupId>
-            <artifactId>common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>de.conciso.shop</groupId>
             <artifactId>domain-api</artifactId>
         </dependency>
 
