@@ -1,7 +1,7 @@
 package de.conciso.starter;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/hello")
 public class HelloWorldController {
 
-  private static Logger logger = LogManager.getLogger(HelloWorldController.class);
+  private static final Logger log = LoggerFactory.getLogger(HelloWorldController.class);
 
   @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
   public String sayHello(@RequestParam("name") String name) {
     var greeter = new GreeterService();
     var greetings = greeter.greet(name);
-    logger.info("response: " + greetings);
+    log.info("response: " + greetings);
     return greetings;
   }
 }

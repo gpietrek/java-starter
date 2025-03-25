@@ -1,7 +1,7 @@
 services:
   db-auftrag:
     container_name: db-auftrag
-    image: postgres:16.3-alpine
+    image: postgres:17.4-bookworm
     ports:
       - 5433:5432
     environment:

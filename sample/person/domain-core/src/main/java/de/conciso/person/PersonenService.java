@@ -2,16 +2,13 @@ package de.conciso.person;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Service
 public class PersonenService implements Personen {
-
-  private static final Logger logger = LogManager.getLogger(PersonenService.class);
 
   private final PersonDAO personDAO;
 
@@ -21,16 +18,16 @@ public class PersonenService implements Personen {
 
   @Override
   public Person create(Person person) {
-    logger.info("create person: " + person.getVorname() + " " + person.getName());
+    log.info("create person: " + person.getVorname() + " " + person.getName());
     return personDAO.save(person);
   }
 
   @Override
   public Optional<Person> findById(int id) {
-    logger.info("looking for person with id: " + id);
+    log.info("looking for person with id: " + id);
     var found = personDAO.findById(id);
     if (found.isEmpty()) {
-      logger.warn("no person found with id: " + id);
+      log.warn("no person found with id: " + id);
     }
     return found;
   }
@@ -38,7 +35,7 @@ public class PersonenService implements Personen {
   @Override
   @Transactional
   public Optional<Person> addAddress(int personId, Address address) {
-    logger.info("adding address to person with id: " +personId);
+    log.info("adding address to person with id: " +personId);
     return findById(personId)
         .map(person -> {
           person.addAddress(address);
@@ -48,7 +45,7 @@ public class PersonenService implements Personen {
 
   @Override
   public List<Person> findAll() {
-    logger.info("list all persons");
+    log.info("list all persons");
     return personDAO.findAll();
   }
 }

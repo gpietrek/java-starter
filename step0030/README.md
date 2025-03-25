@@ -2,7 +2,7 @@
 
 ## Step 30
 
-Logging mit Log4j
+Logging mit Logback
 
 ### Prerequisites
 - Java 21 JDK

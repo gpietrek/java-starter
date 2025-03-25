@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
+        <version>3.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -26,10 +26,10 @@
     <properties>
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <docker-maven-plugin.version>0.44.0</docker-maven-plugin.version>
+        <docker-maven-plugin.version>0.45.1</docker-maven-plugin.version>
         <docker-image.openjdk>eclipse-temurin:21-jre-jammy</docker-image.openjdk>
-        <docker-image.postgres>postgres:16.3-alpine</docker-image.postgres>
-        <lombok.version>1.18.32</lombok.version>
+        <docker-image.postgres>postgres:17.4-bookworm</docker-image.postgres>
+        <lombok.version>1.18.36</lombok.version>
     </properties>
 
     <build>
@@ -99,17 +99,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

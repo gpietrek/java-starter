@@ -17,11 +17,11 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <exec-maven-plugin.version>3.2.0</exec-maven-plugin.version>
-        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-        <log4j.version>2.23.1</log4j.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
-        <assertj-core.version>3.25.3</assertj-core.version>
+        <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+        <logback-core.version>1.5.18</logback-core.version>
+        <junit-jupiter.version>5.12.1</junit-jupiter.version>
+        <assertj-core.version>3.27.3</assertj-core.version>
     </properties>
 
     <build>
@@ -72,9 +72,15 @@
 
             <!-- other libraries -->
             <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j.version}</version>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-core.version}</version>
+                <scope>compile</scope>
             </dependency>
 
             <!-- only for testing -->

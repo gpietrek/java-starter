@@ -1,7 +1,7 @@
 services:
   db:
     container_name: db
-    image: postgres:16.3-alpine
+    image: postgres:17.4-bookworm
     ports:
       - 5432:5432
     environment:
@@ -10,7 +10,7 @@ services:
       - POSTGRES_DB=person
   idm:
     container_name: idm
-    image: quay.io/keycloak/keycloak:24.0.4
+    image: quay.io/keycloak/keycloak:26.1.4
     entrypoint: [ "opt/keycloak/bin/kc.sh", "start-dev", "--import-realm" ]
     ports:
       - 8081:8080
@@ -19,17 +19,9 @@ services:
     environment:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=passKeycloakAdmin
-  java-starter:
-    container_name: java-starter
-    image: java-starter:latest
-    depends_on:
-      - db
-      - idm
-    ports:
-      - 8080:8080
   activemq:
     container_name: activemq
-    image: apache/activemq-classic:6.1.5
+    image: apache/activemq-classic:6.1.6
     ports:
       - 8161:8161
       - 61616:61616
@@ -39,3 +31,12 @@ services:
       - ACTIVEMQ_WEB_USER=admin
       - ACTIVEMQ_WEB_PASSWORD=admin
     command: activemq console
+  java-starter:
+    container_name: java-starter
+    image: java-starter:latest
+    depends_on:
+      - db
+      - idm
+      - activemq
+    ports:
+      - 8080:8080

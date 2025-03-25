@@ -1,15 +1,12 @@
 package de.conciso.starter;
 
 import java.util.Optional;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class PersonenService implements Personen {
-
-  private static final Logger logger = LogManager.getLogger(PersonenService.class);
 
   private final PersonDAO personDAO;
 
@@ -22,11 +19,11 @@ public class PersonenService implements Personen {
 
   @Override
   public Person create(String vorname, String name) {
-    logger.info("create person: " + vorname + " " + name);
+    log.info("create person: " + vorname + " " + name);
 
     try {
       var auftrag = auftraege.create(Auftrag.builder().bestellNummer("Hugo").build());
-      logger.info("created auftrag: " + auftrag.getBestellNummer());
+      log.info("created auftrag: " + auftrag.getBestellNummer());
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -37,10 +34,10 @@ public class PersonenService implements Personen {
 
   @Override
   public Optional<Person> findById(int id) {
-    logger.info("looking for person with id: " + id);
+    log.info("looking for person with id: " + id);
     var found = personDAO.findById(id);
     if (found.isEmpty()) {
-      logger.warn("no person found with id: " + id);
+      log.warn("no person found with id: " + id);
     }
     return found;
   }

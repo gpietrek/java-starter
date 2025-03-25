@@ -1,11 +1,11 @@
 package de.conciso.starter;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HelloWorldApplication {
 
-  private static Logger logger = LogManager.getLogger(HelloWorldApplication.class);
+  private static final Logger log = LoggerFactory.getLogger(HelloWorldApplication.class);
 
   private final Greeter greeter;
 
@@ -14,6 +14,6 @@ public class HelloWorldApplication {
   }
 
   public void run() {
-    logger.info(greeter.greet("World"));
+    log.info(greeter.greet("World"));
   }
 }

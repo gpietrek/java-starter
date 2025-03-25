@@ -1,12 +1,53 @@
 {
 	"info": {
-		"_postman_id": "881478da-c7cf-4683-b0a9-1cfcfe2d4469",
+		"_postman_id": "b8257013-f8d9-47ed-a96a-e9c671dc1fb5",
 		"name": "Starter",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33727951"
 	},
 	"item": [
 		{
-			"name": "Hello World",
+			"name": "create person",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/person?vorname=Georg&name=Pietrek",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"person"
+					],
+					"query": [
+						{
+							"key": "vorname",
+							"value": "Georg"
+						},
+						{
+							"key": "name",
+							"value": "Pietrek"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find person",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"accept": true
@@ -17,24 +58,24 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "text/plain",
+						"value": "application/json",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "localhost:8080/api/hello?name=Georg",
+					"raw": "localhost:8080/api/person?id=1",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"api",
-						"hello"
+						"person"
 					],
 					"query": [
 						{
-							"key": "name",
-							"value": "Georg"
+							"key": "id",
+							"value": "1"
 						}
 					]
 				}
