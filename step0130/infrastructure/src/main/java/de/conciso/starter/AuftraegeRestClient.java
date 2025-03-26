@@ -1,7 +1,5 @@
 package de.conciso.starter;
 
-import java.util.Optional;
-
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -11,22 +9,22 @@ public class AuftraegeRestClient implements Auftraege {
 
   private final WebClient webClient;
 
-  public AuftraegeRestClient(WebClient webClient) {
+  private final AuthorizationTokenHolder tokenHolder;
+
+  public AuftraegeRestClient(WebClient webClient, AuthorizationTokenHolder tokenHolder) {
     this.webClient = webClient;
+    this.tokenHolder = tokenHolder;
   }
 
   @Override
   public Auftrag create(Auftrag auftrag) {
     return webClient.post()
-        .uri(uriBuilder -> uriBuilder.queryParam("bestellNummer", auftrag.getBestellNummer()).build())
-        .accept(MediaType.APPLICATION_JSON)
-        .bodyValue(AuftragRepresentation.from(auftrag))
-        .exchangeToMono(clientResponse -> clientResponse.bodyToMono(AuftragRepresentation.class)
-            .map(auftragRepresentation -> Auftrag.builder()
-                .bestellNummer(auftragRepresentation.getName())
-                .build()
+            .uri(uriBuilder -> uriBuilder.queryParam("bestellNummer", auftrag.getBestellNummer()).build())
+            .accept(MediaType.APPLICATION_JSON)
+            .exchangeToMono(clientResponse -> clientResponse.bodyToMono(AuftragRepresentation.class)
+                    .map(AuftragRepresentation::toAuftrag)
             )
-        )
-        .block();
+            .contextWrite(context -> context.put("authorizationToken", tokenHolder.getToken()))
+            .block();
   }
 }

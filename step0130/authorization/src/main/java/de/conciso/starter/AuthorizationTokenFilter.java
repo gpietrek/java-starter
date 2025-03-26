@@ -1,4 +1,4 @@
-package de.conciso.shop;
+package de.conciso.starter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

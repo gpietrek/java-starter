@@ -15,7 +15,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>common</module>
+        <module>authorization</module>
         <module>domain-api</module>
         <module>domain-core</module>
         <module>infrastructure</module>
@@ -61,7 +61,7 @@
             <!-- our modules -->
             <dependency>
                 <groupId>de.conciso.shop</groupId>
-                <artifactId>common</artifactId>
+                <artifactId>authorization</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

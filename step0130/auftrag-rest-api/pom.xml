@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>de.conciso.shop</groupId>
+        <groupId>de.conciso.starter</groupId>
         <artifactId>starter</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>common</artifactId>
+    <artifactId>auftrag-rest-api</artifactId>
 
     <dependencies>
         <dependency>

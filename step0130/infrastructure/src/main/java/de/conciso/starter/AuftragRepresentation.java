@@ -1,21 +1,20 @@
 package de.conciso.starter;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 
+@Jacksonized
 @Value
 @Builder
-@JsonDeserialize(builder = AuftragRepresentation.AuftragRepresentationBuilder.class)
 public class AuftragRepresentation {
+  int id;
+  String bestellNummer;
 
-  private String vorname;
-
-  private String name;
-
-  static AuftragRepresentation from(Auftrag auftrag) {
-    return new AuftragRepresentation(auftrag.getBestellNummer(), auftrag.getBestellNummer());
+  public Auftrag toAuftrag() {
+    return Auftrag.builder()
+            .id(id)
+            .bestellNummer(bestellNummer)
+            .build();
   }
 }
